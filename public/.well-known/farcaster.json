@@ -10,14 +10,14 @@
     "subtitle": "Built with Zara",
     "description": "Subcast Pulse is a Base Mini App built with Zara.",
     "iconUrl": "$NEXT_PUBLIC_URL/logo.png",
-    "homeUrl": "https://745ab7d6-b9c6-443d-81e2-aefe82dd0557.vistara.dev",
-    "splashImageUrl": "https://dummyimage.com/200x200/0a0b0d/ffffff.png&text=Splash",
+    "homeUrl": "745ab7d6b9c6443d81e2aefe82dd0557-8z09-ps7twiptu-vistara.vercel.app",
+    "splashImageUrl": "745ab7d6b9c6443d81e2aefe82dd0557-8z09-ps7twiptu-vistara.vercel.app/splash.png",
     "splashBackgroundColor": "#000000",
-    "heroImageUrl": "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=Hero",
+    "heroImageUrl": "745ab7d6b9c6443d81e2aefe82dd0557-8z09-ps7twiptu-vistara.vercel.app/image.png",
     "tagline": "Subcast Pulse",
     "screenshotUrls": [
-      "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=Shot1",
-      "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=Shot2"
+      "745ab7d6b9c6443d81e2aefe82dd0557-8z09-ps7twiptu-vistara.vercel.app/screenshot.png",
+      "745ab7d6b9c6443d81e2aefe82dd0557-8z09-ps7twiptu-vistara.vercel.app/screenshot.png"
     ],
     "primaryCategory": "social",
     "tags": [
@@ -25,6 +25,6 @@
       "mini app",
       "onchainkit"
     ],
-    "webhookUrl": "https://745ab7d6-b9c6-443d-81e2-aefe82dd0557.vistara.dev/api/webhook"
+    "webhookUrl": "745ab7d6b9c6443d81e2aefe82dd0557-8z09-ps7twiptu-vistara.vercel.app/api/webhook"
   }
 }
