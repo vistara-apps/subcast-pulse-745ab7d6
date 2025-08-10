@@ -1,0 +1,14 @@
+{
+  "name": "Subcast Pulse",
+  "description": "Subcast Pulse is a Base Mini App built with Zara.",
+  "image": "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=OG",
+  "external_url": "https://745ab7d6-b9c6-443d-81e2-aefe82dd0557.vistara.dev",
+  "properties": {
+    "app": {
+      "name": "Subcast Pulse",
+      "description": "Subcast Pulse is a Base Mini App built with Zara.",
+      "url": "https://745ab7d6-b9c6-443d-81e2-aefe82dd0557.vistara.dev",
+      "icon": "$NEXT_PUBLIC_URL/logo.png"
+    }
+  }
+}
