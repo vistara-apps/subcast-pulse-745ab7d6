@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -65,19 +64,45 @@ export function SubcastFeed({ users, onBack }: SubcastFeedProps) {
 
   if (loading) {
     return (
-      <div className="space-y-4">
+      <div className="space-y-6 animate-in">
         <div className="flex items-center gap-4">
           <button
             onClick={onBack}
-            className="p-2 bg-surface rounded-md hover:bg-gray-700 transition-colors"
+            className="btn-secondary p-3"
+            aria-label="Go back"
           >
-            <ArrowLeft className="h-4 w-4" />
+            <ArrowLeft className="h-5 w-5" />
           </button>
-          <div className="animate-pulse h-8 bg-surface rounded w-48" />
+          <div className="flex items-center gap-4">
+            <div className="flex -space-x-2">
+              <div className="skeleton h-12 w-12 rounded-full" />
+              <div className="skeleton h-12 w-12 rounded-full" />
+            </div>
+            <div className="space-y-2">
+              <div className="skeleton h-6 w-48 rounded" />
+              <div className="skeleton h-4 w-32 rounded" />
+            </div>
+          </div>
         </div>
-        <div className="animate-pulse space-y-4">
+        
+        <div className="space-y-4">
           {[...Array(3)].map((_, i) => (
-            <div key={i} className="h-24 bg-surface rounded-md" />
+            <div key={i} className="card p-6 animate-pulse">
+              <div className="flex items-start gap-4">
+                <div className="skeleton h-12 w-12 rounded-full" />
+                <div className="flex-1 space-y-3">
+                  <div className="flex items-center gap-3">
+                    <div className="skeleton h-4 w-24 rounded" />
+                    <div className="skeleton h-4 w-16 rounded" />
+                    <div className="skeleton h-4 w-20 rounded" />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="skeleton h-4 w-full rounded" />
+                    <div className="skeleton h-4 w-3/4 rounded" />
+                  </div>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </div>
@@ -85,39 +110,54 @@ export function SubcastFeed({ users, onBack }: SubcastFeedProps) {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6 animate-in">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <button
-            onClick={onBack}
-            className="p-2 bg-surface rounded-md hover:bg-gray-700 transition-colors"
-          >
-            <ArrowLeft className="h-4 w-4" />
-          </button>
-          
-          <div className="flex items-center gap-4">
-            <UserAvatarPair users={users} size="sm" />
-            <div>
-              <h2 className="text-lg font-bold text-text">
-                {users[0].displayName} ↔ {users[1].displayName}
-              </h2>
-              <p className="text-sm text-gray-400">
-                {subcasts.length} subcasts in conversation
-              </p>
+      <div className="card p-6">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-5">
+            <button
+              onClick={onBack}
+              className="btn-secondary p-3 group"
+              aria-label="Go back to previous view"
+            >
+              <ArrowLeft className="h-5 w-5 group-hover:-translate-x-0.5 transition-transform duration-200" />
+            </button>
+            
+            <div className="flex items-center gap-5">
+              <div className="relative">
+                <UserAvatarPair users={users} size="sm" />
+                <div className="absolute -bottom-1 -right-1 h-4 w-4 bg-accent rounded-full border-2 border-surface animate-pulse-slow" />
+              </div>
+              <div>
+                <h2 className="text-xl font-bold text-text-primary mb-1">
+                  {users[0].displayName} 
+                  <span className="mx-3 text-accent">↔</span>
+                  {users[1].displayName}
+                </h2>
+                <div className="flex items-center gap-3 text-sm">
+                  <span className="text-text-muted font-medium">
+                    {subcasts.length} subcasts in conversation
+                  </span>
+                  <span className="text-border">•</span>
+                  <span className="text-text-muted">
+                    Active conversation
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Sort Controls */}
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => setSortOrder(sortOrder === 'newest' ? 'oldest' : 'newest')}
-            className="flex items-center gap-2 px-3 py-2 bg-surface rounded-md hover:bg-gray-700 transition-colors text-sm"
-          >
-            {sortOrder === 'newest' ? <Calendar className="h-4 w-4" /> : <Clock className="h-4 w-4" />}
-            {sortOrder === 'newest' ? 'Newest First' : 'Oldest First'}
-          </button>
+          {/* Sort Controls */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setSortOrder(sortOrder === 'newest' ? 'oldest' : 'newest')}
+              className="btn-secondary flex items-center gap-2 text-sm"
+              aria-label={`Sort by ${sortOrder === 'newest' ? 'oldest' : 'newest'} first`}
+            >
+              {sortOrder === 'newest' ? <Calendar className="h-4 w-4" /> : <Clock className="h-4 w-4" />}
+              {sortOrder === 'newest' ? 'Newest First' : 'Oldest First'}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -136,12 +176,31 @@ export function SubcastFeed({ users, onBack }: SubcastFeedProps) {
         })}
 
         {subcasts.length === 0 && (
-          <div className="text-center py-8 text-gray-400">
-            <div className="mb-4">
-              <UserAvatarPair users={users} size="lg" />
+          <div className="card p-12 text-center animate-scale-in">
+            <div className="space-y-6">
+              <div className="relative">
+                <UserAvatarPair users={users} size="lg" />
+                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
+                  <div className="h-8 w-8 bg-surface-hover rounded-full flex items-center justify-center border-2 border-surface">
+                    <span className="text-text-muted text-xs">💬</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-text-primary mb-3">
+                  No conversation yet
+                </h3>
+                <p className="text-text-muted mb-4 max-w-md mx-auto leading-relaxed">
+                  These users haven't started a subcast conversation yet. When they do, 
+                  their messages will appear here.
+                </p>
+                <div className="flex flex-wrap justify-center gap-2 text-sm">
+                  <span className="px-3 py-1 bg-primary/10 text-primary rounded-full border border-primary/20">
+                    🚀 Be the first to start!
+                  </span>
+                </div>
+              </div>
             </div>
-            <p>No subcasts found between these users yet.</p>
-            <p className="text-sm mt-2">Start a conversation to see it here!</p>
           </div>
         )}
       </div>
