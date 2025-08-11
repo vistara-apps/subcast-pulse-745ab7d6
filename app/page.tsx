@@ -96,22 +96,22 @@ export default function Home() {
   };
 
   const renderHeader = () => (
-    <div className="flex items-center justify-between mb-6 px-4 py-3">
-      <div className="flex items-center gap-3">
-        <div className="h-8 w-8 bg-primary rounded-md flex items-center justify-center">
-          <span className="text-white font-bold text-sm">SP</span>
+    <div className="flex items-center justify-between mb-8 px-6 py-4 bg-surface/50 backdrop-blur-sm border-b border-gray-600">
+      <div className="flex items-center gap-4">
+        <div className="h-10 w-10 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center shadow-lg">
+          <span className="text-white font-bold text-lg">SP</span>
         </div>
         <div>
-          <h1 className="text-lg font-bold text-text">Subcast Pulse</h1>
-          <p className="text-xs text-gray-400">Track Farcaster connections</p>
+          <h1 className="text-xl font-bold text-text">Subcast Pulse</h1>
+          <p className="text-sm text-gray-400">Track Farcaster connections</p>
         </div>
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-3">
         {saveFrameButton}
         <button
           onClick={() => viewProfile()}
-          className="px-3 py-1 bg-surface rounded-md text-sm hover:bg-gray-700 transition-colors"
+          className="px-4 py-2 bg-surface rounded-lg text-sm hover:bg-gray-700 transition-all duration-200 border border-gray-600 hover:border-accent/50"
         >
           Profile
         </button>
@@ -120,13 +120,13 @@ export default function Home() {
   );
 
   const renderNavigation = () => (
-    <div className="flex border-b border-gray-700 px-4">
+    <div className="flex border-b border-gray-600 px-6 bg-surface/30">
       <button
         onClick={() => setCurrentView('home')}
-        className={`flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 transition-colors ${
+        className={`flex items-center gap-2 px-6 py-4 text-sm font-medium border-b-2 transition-all duration-200 ${
           currentView === 'home'
-            ? 'border-primary text-primary'
-            : 'border-transparent text-gray-400 hover:text-text'
+            ? 'border-primary text-primary bg-primary/5'
+            : 'border-transparent text-gray-400 hover:text-text hover:bg-surface/50'
         }`}
       >
         <TrendingUp className="h-4 w-4" />
@@ -134,10 +134,10 @@ export default function Home() {
       </button>
       <button
         onClick={() => setCurrentView('search')}
-        className={`flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 transition-colors ${
+        className={`flex items-center gap-2 px-6 py-4 text-sm font-medium border-b-2 transition-all duration-200 ${
           currentView === 'search'
-            ? 'border-primary text-primary'
-            : 'border-transparent text-gray-400 hover:text-text'
+            ? 'border-primary text-primary bg-primary/5'
+            : 'border-transparent text-gray-400 hover:text-text hover:bg-surface/50'
         }`}
       >
         <Search className="h-4 w-4" />
@@ -183,49 +183,51 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-bg text-text">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-text">
       {renderHeader()}
       
       {/* Wallet Connection */}
-      <div className="px-4 mb-6">
-        <Wallet className="w-full">
-          <ConnectWallet className="w-full">
-            <Name className="text-inherit" />
-          </ConnectWallet>
-          <WalletDropdown>
-            <Identity className="px-4 pt-3 pb-2" hasCopyAddressOnClick>
-              <Avatar />
-              <Name />
-              <Address />
-            </Identity>
-            <WalletDropdownDisconnect />
-          </WalletDropdown>
-        </Wallet>
+      <div className="px-6 mb-8">
+        <div className="bg-surface/50 backdrop-blur-sm rounded-xl border border-gray-600 p-4 shadow-lg">
+          <Wallet className="w-full">
+            <ConnectWallet className="w-full bg-gradient-to-r from-primary to-accent text-white rounded-lg hover:opacity-90 transition-opacity">
+              <Name className="text-inherit font-medium" />
+            </ConnectWallet>
+            <WalletDropdown>
+              <Identity className="px-4 pt-3 pb-2" hasCopyAddressOnClick>
+                <Avatar />
+                <Name />
+                <Address />
+              </Identity>
+              <WalletDropdownDisconnect />
+            </WalletDropdown>
+          </Wallet>
+        </div>
       </div>
 
       {currentView !== 'feed' && renderNavigation()}
       
-      <div className="px-4 py-6">
+      <div className="px-6 py-8">
         {renderContent()}
       </div>
 
       {/* Footer */}
-      <div className="px-4 py-6 border-t border-gray-700 mt-8">
+      <div className="px-6 py-8 border-t border-gray-600 mt-12 bg-surface/20">
         <div className="flex items-center justify-between">
-          <p className="text-xs text-gray-500">
+          <p className="text-sm text-gray-400">
             Built with{' '}
             <button
               onClick={() => openUrl('https://docs.base.org/tools/minikit')}
-              className="text-accent hover:underline"
+              className="text-accent hover:underline font-medium transition-colors"
             >
               MiniKit
             </button>
           </p>
-          <p className="text-xs text-gray-500">
+          <p className="text-sm text-gray-400">
             Powered by{' '}
             <button
               onClick={() => openUrl('https://base.org')}
-              className="text-accent hover:underline"
+              className="text-accent hover:underline font-medium transition-colors"
             >
               Base
             </button>
